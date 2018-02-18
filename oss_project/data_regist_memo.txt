@@ -1,0 +1,38 @@
+import datetime
+from datetime import timezone
+import pytz
+from info.models import *
+from dateutil import tz
+
+released = datetime.date(2017, 10, 23)
+now = datetime.datetime.now().replace(tzinfo=tz.tzlocal())
+registrated = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute, now.second)
+
+Info.objects.create(oss_id="1", version="2.4.29", released=released, registrated=registrated)
+
+
+
+
+
+
+
+
+
+
+
+
+–v
+import datetime
+import pytz
+from info.models import *
+
+
+Oss.objects.create(name="Apache httpd")
+
+
+released = datetime.date(2017, 10, 23)
+now = datetime.datetime.now()
+registration = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute, now.second)
+
+oss=Oss.objects.get(id=1)
+Info.objects.create(oss=oss, version="2.4.29", released=released, registration=registration)
