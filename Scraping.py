@@ -1,9 +1,9 @@
+# coding: utf-8
+
 import requests #httpリクエストを実行
-import bs4 #Beutifulsoupをインポート
+import bs4 #BeutifulSoupをインポート
 import re #正規表現を利用
 from datetime import *
-
-
 
 url_apachehttpd = 'https://httpd.apache.org/'
 url_apachetomcat = 'http://tomcat.apache.org/'
@@ -20,7 +20,7 @@ def getsoup(url):
 		#soup = bs4.BeautifulSoup(html,'html.parser')
 		soup = bs4.BeautifulSoup(html,'lxml')
 	else:
-		soup = bs4.BeautifulSoup(res.text,'html.parser')
+		soup = bs4.BeautifulSoup(res.text,'lxml')
 	finally:
 		return soup
 
@@ -44,7 +44,7 @@ def apachehttpd_scraping():
 			dateDate = date(dateDatetime.year, dateDatetime.month, dateDatetime.day)
 			#print(dateDate)#リリース日
 			list.append([retext[0],dateDate])
-	#print(list)
+			
 	return list
 
 
@@ -65,7 +65,7 @@ def apachetomcat_scraping():
 			dateDate = date(dateDatetime.year, dateDatetime.month, dateDatetime.day)
 			#print(dateDatetime)#リリース日
 			list.append([retext[0],dateDate])
-	#print(list)
+			
 	return list
 
 
@@ -76,7 +76,7 @@ def openssl_scraping():
 	list = []
 	for row in rows:
 		text = row.select("td.t")[0].getText()
-		pattern = "OpenSSL"
+		pattern = "OpenSSL [0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}[a-z] is now available"
 		
 		if re.match(pattern , text) != None:
 			strRawdate = row.select("td.d")[0].getText()
@@ -86,12 +86,13 @@ def openssl_scraping():
 			retext = re.findall('[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}[a-z]' , row.select("td.t")[0].getText())#リリース日
 			#print(retext[0])#バージョン
 			list.append([retext[0], dateDate])
-	#print(list)
+			
 	return list
 
 
-#apachehttpd_scraping()
-#apachetomcat_scraping()
-#openssl_scraping()
+if __name__ == '__main__':
+    print(apachehttpd_scraping())
+    print(apachetomcat_scraping())
+    print(openssl_scraping())
 
 

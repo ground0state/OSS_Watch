@@ -1,0 +1,67 @@
+{% extends "portal/base.html" %}
+{% block title %}Portal{% endblock %}
+{% load staticfiles %}
+{% block body %}
+<header>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('{% static '/portal/images/cat.jpg' %}')">
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('{% static '/portal/images/lizard.jpg' %}')">
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('{% static '/portal/images/tuna.jpg' %}')">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</header>
+<!-- Page Content -->
+<div class="container">
+  <h1 class="my-4">Welcome to Our Space</h1>
+  <!-- Marketing Icons Section -->
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">OSS情報</h4>
+        <div class="card-body">
+          <p class="card-text">OSSの更新情報や脆弱性情報を一覧できるサイトになる予定。</p>
+        </div>
+        <div class="card-footer">
+          <a href="/oss/update_info/" class="btn btn-primary">GO!</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">統計の部屋</h4>
+        <div class="card-body">
+          <p class="card-text">統計分析とかやった結果を格納する予定。</p>
+        </div>
+        <div class="card-footer">
+          <a href="/" class="btn btn-primary">Comming Soon?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Portfolio Section -->
+
+
+  {% endblock %}
+

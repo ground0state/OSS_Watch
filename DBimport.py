@@ -1,6 +1,8 @@
+# coding: utf-8
+
 from datetime import *
 from dateutil import tz
-import Scraping as sc
+import scraping as sc
 from django.db import IntegrityError
 
 import sys

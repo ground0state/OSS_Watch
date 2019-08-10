@@ -16,10 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from django.views.generic import RedirectView
 
 import info.views
+import info.apis
+import portal.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^info_list/', info.views.InfoListView.as_view())
+    #path('admin/', admin.site.urls),
+    url(r'^oss/update_info/$', info.views.UpdateInfoView.as_view()),
+    url(r'^oss/update_info/api/', include(info.apis.router.urls)),
+    url(r'^portal/$', portal.views.PortalView.as_view()),
+    url(r'^portal/about/$', portal.views.PortalAboutView.as_view()),
+    url(r'^$', RedirectView.as_view(url='/portal/')),
 ]

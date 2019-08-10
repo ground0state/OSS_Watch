@@ -23,11 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8z!qgun3c)bn=o5w!+#0_a^u@+8y25+*w@wn1d)ha#vnxddhu='
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#
 DEBUG = True
 #DEBUG = False
 
-ALLOWED_HOSTS = []#初期設定
-#ALLOWED_HOSTS = ['127.0.0.1', 'localhost']#DEBUG = Falseではこちらを選択
+#ALLOWED_HOSTS = []#初期設定
+ALLOWED_HOSTS = ['*']#DEBUG = Falseではこちらを選択
 
 # Application definition
 
@@ -39,7 +40,32 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'info',
+    'rest_framework',
+    'django_filters',
+    'portal',
 ]
+
+#↓#DjangoRestFrameworkのfilter機能追加####
+#REST_FRAMEWORK = {
+#'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',) 
+#}
+#↑########################################
+#↓#DjangoRestFrameworkのfilter機能追加####
+DEFAULT_RENDERER_CLASSES = (
+    'rest_framework.renderers.JSONRenderer',
+)
+
+if DEBUG:
+    DEFAULT_RENDERER_CLASSES = DEFAULT_RENDERER_CLASSES + (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticatedOrReadOnly',),
+'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES
+}
+#↑########################################
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

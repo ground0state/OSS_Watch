@@ -1,0 +1,21 @@
+{% extends "portal/base.html" %}
+{% block title %}Portal{% endblock %}
+{% load staticfiles %}
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">About</h1>
+  <!-- Intro Content -->
+  <div class="row">
+    <div class="col-lg-6">
+      <img class="img-fluid rounded mb-4" src="{% static '/portal/images/tuna.jpg' %}"  alt="">
+    </div>
+    <div class="col-lg-6">
+      <h2>このサイトについて</h2>
+      <p>このサイトは管理人が勉強した記録を残すためのサイトです。</p>
+      <p>Webサービスや統計分析などのコンテンツを作るつもりです。</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

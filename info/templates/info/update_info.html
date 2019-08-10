@@ -1,5 +1,5 @@
 {% extends "info/base.html" %}
-{% block title %}Info List{% endblock %}
+{% block title %}Update Info{% endblock %}
 {% load staticfiles %}
 
       {% block body %}
@@ -10,7 +10,7 @@
               <div class="panel panel-default full-width">
 
                 <div class="panel-heading">
-                  Edit Help
+                  OSS更新情報
                 </div>
 
                 <div class="panel-body full-width full-height">
@@ -24,7 +24,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                    {% for record in info_list %}
+                    {% for record in update_info %}
                       <tr>
                         <td>{{record.oss.oss_name}}</td>
                         <td>{{record.version}}</td>

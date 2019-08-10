@@ -7,13 +7,13 @@ from django.views.generic import TemplateView
 from info.models import *
 
 
-class InfoListView(TemplateView):
-	template_name = "info/info_list.html"
+class UpdateInfoView(TemplateView):
+    template_name = "info/update_info.html"
 
-	def get(self, request, *args, **kwargs):
-		context = super(InfoListView, self).get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
+        context = super(UpdateInfoView, self).get_context_data(**kwargs)
 
-		info_list = Info.objects.all().order_by("released").reverse()  # データベースからオブジェクトを取得して
-		context['info_list'] = info_list  # 入れ物に入れる
+        update_info = Info.objects.all().order_by("released").reverse()  # データベースからオブジェクトを取得して
+        context['update_info'] = update_info  # 入れ物に入れる
 
-		return render(self.request, self.template_name, context)
+        return render(self.request, self.template_name, context)
